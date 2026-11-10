@@ -1,0 +1,73 @@
+.page {
+  min-height: 100vh;
+  padding: var(--space-5) var(--space-4);
+  background: var(--color-bg);
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-2);
+  max-width: 210mm;
+  margin: 0 auto var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.toolbar p {
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: space-between;
+}
+
+.warning {
+  color: var(--color-warning);
+}
+
+.paper {
+  overflow-x: auto;
+}
+
+/* Phones: show the A4 sheet scaled down instead of scrolling sideways. Screen only. */
+@media screen and (max-width: 840px) {
+  .paper {
+    zoom: 0.45;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    /* No page margin: the company header and footer reach the edges, and the browser's own
+       date / url lines have no room. */
+    margin: 0;
+  }
+
+  .page {
+    min-height: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .toolbar {
+    display: none;
+  }
+
+  .paper {
+    overflow: visible;
+  }
+
+  :global(body) {
+    background: #fff;
+  }
+}

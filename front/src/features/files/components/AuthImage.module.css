@@ -1,0 +1,16 @@
+.placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 96px;
+  padding: var(--space-3);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  color: var(--color-muted);
+  font-size: 0.875rem;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  border-radius: var(--radius);
+}

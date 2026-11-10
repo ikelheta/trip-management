@@ -1,0 +1,23 @@
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-info-soft);
+  color: var(--color-link);
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
+.small {
+  width: 32px;
+  height: 32px;
+  font-size: 0.8125rem;
+}
+
+.large {
+  width: 72px;
+  height: 72px;
+  font-size: 1.5rem;
+}

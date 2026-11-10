@@ -1,0 +1,53 @@
+.card {
+  align-self: start;
+}
+
+.printArea {
+  display: grid;
+  gap: var(--space-2);
+  justify-items: center;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+  aspect-ratio: 1;
+  image-rendering: pixelated;
+}
+
+.caption {
+  margin: 0;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+}
+
+/* Print only the code and its caption, and only on a page that shows the card.
+   Element selectors are not scoped by CSS Modules: a bare `body *` would hide every printed page. */
+@media print {
+  body:has(.printArea) * {
+    visibility: hidden;
+  }
+
+  .printArea,
+  .printArea * {
+    visibility: visible;
+  }
+
+  .printArea {
+    position: fixed;
+    inset: 0;
+    align-content: center;
+  }
+
+  .image {
+    width: 80mm;
+    max-width: none;
+  }
+}

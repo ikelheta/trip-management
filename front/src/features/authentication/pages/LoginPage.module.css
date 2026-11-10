@@ -1,0 +1,16 @@
+.card {
+  width: min(400px, 100%);
+}
+
+/* Title at the start, language switcher at the end (flips in right-to-left). */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.header h1 {
+  margin: 0;
+}

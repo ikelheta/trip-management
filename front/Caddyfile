@@ -1,0 +1,18 @@
+# Built into the web image (see Dockerfile). One address for everything: /api/* goes to the API container,
+# the rest is the React app. SITE_ADDRESS ":80" serves plain HTTP; a domain name makes Caddy get and renew HTTPS.
+{$SITE_ADDRESS::80} {
+	encode zstd gzip
+
+	handle /api/* {
+		reverse_proxy api:3000
+	}
+
+	handle {
+		root * /srv
+		# Hashed build files never change: cache them for a year.
+		header /assets/* Cache-Control "public, max-age=31536000, immutable"
+		# Client-side routes (/trips/…) load index.html.
+		try_files {path} /index.html
+		file_server
+	}
+}
